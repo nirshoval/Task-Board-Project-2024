@@ -23,7 +23,7 @@ function addData() {
         detail: taskDetailBox.value,
         date: dueDateBox.value,
         time: timeBox.value,
-        id: +tasks.length
+        id: tasks.length ? tasks[tasks.length - 1].id + 1 : 1
     };
 
     // display array of tasks
@@ -39,13 +39,13 @@ function addData() {
 }
 
 // Display new tasks in the container
-function displayNewTask(newTask, currentTasksLength) {
+function displayNewTask(newTask) {
     const tasksContainer = document.getElementById("tasksContainer");
     const child = document.createElement("div");
     child.setAttribute("class", "task");
     const date = new Date(newTask.date);
     const formattedDate = date.toLocaleDateString("en-GB");
-    child.innerHTML = `<span id ="${currentTasksLength}" class="deleteIcon btn btn-danger" onclick="deleteTask(this)">
+    child.innerHTML = `<span id ="${newTask.id}" class="deleteIcon btn btn-danger" onclick="deleteTask(this)">
                             ❌
                         </span>
                         <h4 class="task-title">
@@ -59,31 +59,29 @@ function displayNewTask(newTask, currentTasksLength) {
                             <span class="time">${newTask.time}</span>
                         </p>`
     tasksContainer.appendChild(child);
-
-    child.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
 // Display Tasks
 function displayAllTasks() {
     const tasksContainer = document.getElementById("tasksContainer");
     let content = "";
-    for (const task of tasks) {
-        const date = new Date(task.date);
+    for (let i = 0; i < tasks.length; i++) {
+        const date = new Date(tasks[i].date);
         const formattedDate = date.toLocaleDateString("en-GB");
         content += `<div class="task">
-                        <span id ="${task.id}" class="deleteIcon btn" onclick="deleteTask(this)">
+                        <span id ="${tasks[i].id}" class="deleteIcon btn" onclick="deleteTask(this)">
                         ❌
                         </span>
                         <h4 class="task-title">
-                            ${task.title}
+                            ${tasks[i].title}
                         </h4>
                         <br>
                         <h6 class="task-detail scroll">
-                            ${task.detail}
+                            ${tasks[i].detail}
                         </h6>
                         <p class="task-footer">
                             <span class="due-date">${formattedDate}</span>
-                            <span class="time">${task.time}</span>
+                            <span class="time">${tasks[i].time}</span>
                         </p>
                     </div>`;
     }
