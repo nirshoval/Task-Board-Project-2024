@@ -19,15 +19,6 @@
         opacity: 1;
     }
 }
-@keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}
 @keyframes glow {
     0% {
         text-shadow: 0 0 5px #ffffff, 0 0 10px #00eaff, 0 0 20px #00eaff, 0 0 30px #0077ff, 0 0 40px #0077ff;
@@ -38,8 +29,6 @@
 }
 /* End animations */
 
-
-
 /* Body */
 body {
     background-image: url("assets/images/blue-pink-br.jfif");
@@ -48,20 +37,15 @@ body {
     background-attachment: fixed; 
     background-size: 100% 100%;
 }
-
 /* End Body */
-
 
 header {
     display: flex;
     justify-content: center;
-    /* flex-wrap: wrap; */
-    /* align-content: space-around; */
     margin: 5px;
     padding-top: 5px;
     font-family: CaveatBrush;
     font-size:60px;
-    /* font-size: 9vh; */
     -webkit-text-stroke: 1px #ffffff;
     animation: glow 3s ease-in-out infinite alternate;
 }
@@ -155,7 +139,6 @@ form>label {
     width: 180px;
     height: 300px;
     margin: 10px;
-    
     padding-top: 40px;
     background-image: url("assets/images/task-bg2.jpg");
     background-size: auto;
@@ -198,7 +181,6 @@ form>label {
     border: 1px solid black;
     animation: fadeIn 0.5s ease;
 }
-
 
 .deleteIcon {
     position: absolute;
@@ -316,7 +298,6 @@ form>label {
 #backToTop:focus {
     outline: none;
 }
-
  /* End of Back to top button */
 
 

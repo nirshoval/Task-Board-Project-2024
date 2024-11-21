@@ -1,4 +1,4 @@
-"strict-mode";
+"use strict";
 
 // Create array
 let tasks = [];
@@ -8,10 +8,6 @@ loadFromLocalStorage();
 
 // Add new task to the array 
 function addData() {
-
-    // Prevent Refresh
-    event.preventDefault();
-
     const titleBox = document.getElementById("titleBox");
     const taskDetailBox = document.getElementById("taskDetailBox");
     const dueDateBox = document.getElementById("dueDateBox");
@@ -59,6 +55,9 @@ function displayNewTask(newTask) {
                             <span class="time">${newTask.time}</span>
                         </p>`
     tasksContainer.appendChild(child);
+
+     // Scroll to the last task
+     child.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 // Display Tasks
@@ -142,7 +141,7 @@ function loadFromLocalStorage() {
 
 
 
-// When the user scrolls down the page - show the button
+// Show the button When the user scrolls down
 let backToTop = document.getElementById("backToTop");
 window.onscroll = function() {scrollFunction()};
 
@@ -155,7 +154,7 @@ function scrollFunction() {
     }
 }
 
-// When the user clicks on the button - scroll up
+// Scroll up when the user clicks on the button  
 function scrollToTop() {
     window.scrollTo({
         top: 0,
